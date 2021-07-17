@@ -1,0 +1,1908 @@
+WindowManager:
+
+    MainWindow:
+    TrainingWindow:
+    TrainingRuTest:
+    TrNumWindow:
+    TrNumTest:
+    TrWords:
+    Setup:
+    BTConnect:
+
+<BTConnect>:
+    name: "BTConnect"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 30
+        spacing: 20
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/bauhaus.ttf'
+            text: "Connect"
+            size_hint: 1, .2
+            pos_hint: {"center_x": .5}
+            on_press: root.connect_bt()
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/bauhaus.ttf'
+            text: "Connect 2"
+            size_hint: 1, .2
+            pos_hint: {"center_x": .5}
+            on_press: root.con_bt()
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/bauhaus.ttf'
+            text: "Send A"
+            size_hint: 1, .2
+            pos_hint: {"center_x": .5}
+            on_press: root.on()
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/bauhaus.ttf'
+            text: "Disconnect"
+            size_hint: 1, .2
+            pos_hint: {"center_x": .5}
+            on_press: root.disconnect()
+<MainWindow>:
+    name: "MainWindow"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 30
+        spacing: 20
+
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/proto.ttf'
+            text: "BT Connect"
+            size_hint: .8, .25
+            pos_hint: {"center_x": .5}
+            # on_press: root.on_connect_click()
+            # background_normal: ''
+            background_color: 0, 0, .4, .95
+            on_release:
+                app.root.current = "BTConnect"
+                root.manager.transition.direction = "up"
+        Label:
+            font_size: dp(40)
+            font_name: 'fonts/20808.otf'
+            text: "Sense Hand"
+            size_hint: .1, .1
+            pos_hint: {"center_x": .5, "top": 0}
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/proto.ttf'
+            text: "Start"
+            size_hint: .8, .25
+            pos_hint: {"center_x": .5}
+            # on_press: root.on_button1_click()
+            # background_normal: ''
+            background_color: 0, 0, .3, .95
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/proto.ttf'
+            text: "Training"
+            size_hint: .8, .25
+            pos_hint: {"center_x": .5}
+            # on_press: root.on_button2_click()
+            # background_normal: ''
+            background_color: 0, 0, .2, .95
+            on_release:
+                app.root.current = "TrainingWindow"
+                root.manager.transition.direction = "left"
+        Button:
+            font_size: dp(20)
+            font_name: 'fonts/proto.ttf'
+            text: "Setup"
+            size_hint: .8, .25
+            pos_hint: {"center_x": .5}
+            # on_press: root.on_button3_click()
+            # background_normal: ''
+            background_color: 0, 0, 0.1, .95
+            on_release:
+                app.root.current = "Setup"
+                root.manager.transition.direction = "left"
+
+<TrainingWindow>:
+    name: "TrainingWindow"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "<<"
+                size_hint: .2, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "MainWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "RU"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                background_color: 0, 1, 0, .95
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "NUM"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "TrNumWindow"
+                    root.manager.transition.direction = "left"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "Words"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "TrWords"
+                    root.manager.transition.direction = "left"
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 30
+            spacing: 20
+            size_hint: 1, 1
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                pos_hint: {"top": 1}
+                size_hint: 1, 1
+                Button:
+                    id: A1
+                    background_color: 0, 0, .3, .95
+                    text: "A1"
+                    size_hint: 1, 1
+                Button:
+                    id: B1
+                    text: "B1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C1
+                    text: "C1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D1
+                    text: "D1"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A2
+                    text: "A2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B2
+                    text: "B2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C2
+                    text: "C2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D2
+                    text: "D2"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A3
+                    text: "A3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B3
+                    text: "B3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C3
+                    text: "C3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D3
+                    text: "D3"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A4
+                    text: "A4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B4
+                    text: "B4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C4
+                    text: "C4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D4
+                    text: "D4"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A5
+                    text: "A5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B5
+                    text: "B5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C5
+                    text: "C5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D5
+                    text: "D5"
+                    background_color: 0, 0, .3, .95
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Slider:
+                min: -100
+                max: -1
+                value: -50
+                on_value: root.on_slider_value(self)
+
+        GridLayout:
+            #orientation: "horizontal"
+            rows: 3
+            size_hint: 1, .6
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "А"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl1()
+
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Б"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl2()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "В"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl3()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Г"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl4()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Д"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl5()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Е"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl6()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ж"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl7()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "З"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl8()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "И"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl9()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Й"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl10()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "К"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl11()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Л"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl12()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "М"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl13()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Н"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl14()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "О"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl15()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "П"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl16()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Р"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl17()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "С"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl18()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Т"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl19()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "У"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl20()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ф"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl21()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Х"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl22()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ц"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl23()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ч"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl24()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ш"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl25()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Щ"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl26()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ъ"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl27()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ы"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl28()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ь"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl29()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Э"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl30()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Ю"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl31()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "Я"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.cl32()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "*"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                # on_press: root.cl32()
+                background_color: 0, 1, 1, .95
+                on_release:
+                    app.root.current = "TrainingRuTest"
+                    root.manager.transition.direction = "up"
+<TrainingRuTest>:
+    name: "TrainingRuTest"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "<<"
+                size_hint: .2, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "MainWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "RU"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                background_color: 0, 1, 0, .95
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "NUM"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "TrNumWindow"
+                    root.manager.transition.direction = "left"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "Words"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "TrWords"
+                    root.manager.transition.direction = "left"
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 30
+            spacing: 20
+            size_hint: 1, 1
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                pos_hint: {"top": 1}
+                size_hint: 1, 1
+                Button:
+                    id: A1
+                    background_color: 0, 0, .3, .95
+                    text: "A1"
+                    size_hint: 1, 1
+                Button:
+                    id: B1
+                    text: "B1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C1
+                    text: "C1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D1
+                    text: "D1"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A2
+                    text: "A2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B2
+                    text: "B2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C2
+                    text: "C2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D2
+                    text: "D2"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A3
+                    text: "A3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B3
+                    text: "B3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C3
+                    text: "C3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D3
+                    text: "D3"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A4
+                    text: "A4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B4
+                    text: "B4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C4
+                    text: "C4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D4
+                    text: "D4"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A5
+                    text: "A5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B5
+                    text: "B5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C5
+                    text: "C5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D5
+                    text: "D5"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 2
+                Button:
+                    id: Re
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Repeat"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.re_letter()
+                Button:
+                    id: Ne
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Next"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.rand_letter()
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Slider:
+                min: -100
+                max: -1
+                value: -50
+                on_value: root.on_slider_value(self)
+
+        GridLayout:
+            #orientation: "horizontal"
+            rows: 3
+            size_hint: 1, .6
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 1
+                text: "А"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 2
+                text: "Б"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 3
+                text: "В"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 4
+                text: "Г"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 5
+                text: "Д"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 6
+                text: "Е"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 7
+                text: "Ж"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 8
+                text: "З"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 9
+                text: "И"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 10
+                text: "Й"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 11
+                text: "К"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 12
+                text: "Л"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 13
+                text: "М"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 14
+                text: "Н"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 15
+                text: "О"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 16
+                text: "П"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 17
+                text: "Р"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 18
+                text: "С"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 19
+                text: "Т"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 20
+                text: "У"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 21
+                text: "Ф"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 22
+                text: "Х"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 23
+                text: "Ц"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 24
+                text: "Ч"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 25
+                text: "Ш"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 26
+                text: "Щ"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 27
+                text: "Ъ"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 28
+                text: "Ы"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 29
+                text: "Ь"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 30
+                text: "Э"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 31
+                text: "Ю"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: 32
+                text: "Я"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "*"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                # on_press: root.cl32()
+                background_color: 0, 1, 1, .95
+                on_release:
+                    app.root.current = "TrainingWindow"
+                    root.manager.transition.direction = "down"
+
+<TrNumWindow>:
+    name: "TrNumWindow"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "<<"
+                size_hint: .2, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "MainWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "RU"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                # background_color: 0, 1, 0, .95
+                on_release:
+                    app.root.current = "TrainingWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "NUM"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                background_color: 0, 1, 0, .95
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "Words"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "TrWords"
+                    root.manager.transition.direction = "left"
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 30
+            spacing: 20
+            size_hint: 1, 1
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                pos_hint: {"top": 1}
+                size_hint: 1, 1
+                Button:
+                    id: A1
+                    background_color: 0, 0, .3, .95
+                    text: "A1"
+                    size_hint: 1, 1
+                Button:
+                    id: B1
+                    text: "B1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C1
+                    text: "C1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D1
+                    text: "D1"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A2
+                    text: "A2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B2
+                    text: "B2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C2
+                    text: "C2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D2
+                    text: "D2"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A3
+                    text: "A3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B3
+                    text: "B3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C3
+                    text: "C3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D3
+                    text: "D3"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A4
+                    text: "A4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B4
+                    text: "B4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C4
+                    text: "C4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D4
+                    text: "D4"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A5
+                    text: "A5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B5
+                    text: "B5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C5
+                    text: "C5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D5
+                    text: "D5"
+                    background_color: 0, 0, .3, .95
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Slider:
+                min: -100
+                max: -1
+                value: -50
+                on_value: root.on_slider_value(self)
+
+        GridLayout:
+            #orientation: "horizontal"
+            rows: 3
+            size_hint: 1, .6
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "0"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl1()
+
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "1"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl2()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "2"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl3()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "3"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl4()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "4"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl5()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "5"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl6()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "6"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl7()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "7"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl8()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "8"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl9()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "9"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl10()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "10"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl11()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "?"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl12()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "!"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl13()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "."
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl14()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: ","
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl15()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "-"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl16()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: ":"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl17()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "("
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl18()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: ")"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.ncl19()
+
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "*"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                # on_press: root.ncl20()
+                background_color: 0, 1, 1, .95
+                on_release:
+                    app.root.current = "TrNumTest"
+                    root.manager.transition.direction = "up"
+
+<TrNumTest>:
+    name: "TrNumTest"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "<<"
+                size_hint: .2, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "MainWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "RU"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                # background_color: 0, 1, 0, .95
+                on_release:
+                    app.root.current = "TrainingWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "NUM"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                background_color: 0, 1, 0, .95
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "Words"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "TrWords"
+                    root.manager.transition.direction = "left"
+
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 30
+            spacing: 20
+            size_hint: 1, 1
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                pos_hint: {"top": 1}
+                size_hint: 1, 1
+                Button:
+                    id: A1
+                    background_color: 0, 0, .3, .95
+                    text: "A1"
+                    size_hint: 1, 1
+                Button:
+                    id: B1
+                    text: "B1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C1
+                    text: "C1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D1
+                    text: "D1"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A2
+                    text: "A2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B2
+                    text: "B2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C2
+                    text: "C2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D2
+                    text: "D2"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A3
+                    text: "A3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B3
+                    text: "B3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C3
+                    text: "C3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D3
+                    text: "D3"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A4
+                    text: "A4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B4
+                    text: "B4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C4
+                    text: "C4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D4
+                    text: "D4"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 1
+                Button:
+                    id: A5
+                    text: "A5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: B5
+                    text: "B5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: C5
+                    text: "C5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    id: D5
+                    text: "D5"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 2
+                Button:
+                    id: Re
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Repeat"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.re_num()
+                Button:
+                    id: Ne
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Next"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.rand_num()
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 2
+                Button:
+                    id: Rt
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Random Time"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.rand_time()
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Slider:
+                min: -100
+                max: -1
+                value: -50
+                on_value: root.on_slider_value(self)
+
+        GridLayout:
+            #orientation: "horizontal"
+            rows: 3
+            size_hint: 1, .6
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n1
+                text: "0"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n2
+                text: "1"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n3
+                text: "2"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n4
+                text: "3"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n5
+                text: "4"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n6
+                text: "5"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n7
+                text: "6"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n8
+                text: "7"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n9
+                text: "8"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n10
+                text: "9"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n11
+                text: "10"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n12
+                text: "?"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n13
+                text: "!"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n14
+                text: "."
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n15
+                text: ","
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n16
+                text: "-"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n17
+                text: ":"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n18
+                text: "("
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                background_color: 0.5, 0.5, 0.5, 1
+                id: n19
+                text: ")"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                on_press: root.corr_check_num()
+
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/bauhaus.ttf'
+                text: "*"
+                size_hint: .2, .2
+                pos_hint: {"y": 0.8}
+                # on_press: root.ncl20()
+                background_color: 0, 1, 1, .95
+                on_release:
+                    app.root.current = "TrNumWindow"
+                    root.manager.transition.direction = "down"
+
+<TrWords>:
+    name: "TrWords"
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .065
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "<<"
+                size_hint: .2, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                on_release:
+                    app.root.current = "MainWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "RU"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                # background_color: 0, 1, 0, .95
+                on_release:
+                    app.root.current = "TrainingWindow"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "NUM"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                # background_color: 0, 1, 0, .95
+                on_release:
+                    app.root.current = "TrNumTest"
+                    root.manager.transition.direction = "right"
+            Button:
+                font_size: dp(20)
+                font_name: 'fonts/proto.ttf'
+                text: "Words"
+                size_hint: 1, 1
+                #height: "40dp"
+                pos_hint: {"y": 0}
+                background_color: 0, 1, 0, .95
+        BoxLayout:
+            orientation: "vertical"
+            padding: 30
+            spacing: 20
+            size_hint: 1, 1
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: .7, 2
+                Button:
+                    id: Re
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Short"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.short_list()
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: .8, 2
+                Button:
+                    id: Ne
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Normal"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.normal_list()
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: .9, 2
+                Button:
+                    id: Ne
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Long"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.long_list()
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 2
+                Button:
+                    id: Ne
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Combination"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.combination_list()
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, 3
+                Button:
+                    id: Rt
+                    font_size: dp(15)
+                    font_name: 'fonts/proto.ttf'
+                    text: "Repeat"
+                    background_color: .5, 0, .3, .95
+                    on_press: root.repeat_list()
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, .1
+            Slider:
+                min: -100
+                max: -1
+                value: -50
+                on_value: root.on_slider_value(self)
+<Setup>:
+    name: "Setup"
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "top"
+        BoxLayout:
+            padding: 30
+            spacing: 20
+            orientation: "vertical"
+            Label:
+                font_size: dp(60)
+                font_name: 'fonts/20808.otf'
+                text: "Setup"
+                size_hint: .8, .25
+                pos_hint: {"center_x": .5}
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, .2
+                Button:
+                    background_color: 0, 0, .3, .95
+                    text: "A1"
+                Button:
+                    text: "B1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "C1"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "D1"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, .2
+                Button:
+                    text: "A2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "B2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "C2"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "D2"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, .2
+                Button:
+                    text: "A3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "B3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "C3"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "D3"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, .2
+                Button:
+                    text: "A4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "B4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "C4"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "D4"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                spacing: 10
+                pos_hint: {"center_x": .5}
+                size_hint: 1, .2
+                Button:
+                    text: "A5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "B5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "C5"
+                    background_color: 0, 0, .3, .95
+                Button:
+                    text: "D5"
+                    background_color: 0, 0, .3, .95
+            BoxLayout:
+                pos_hint: {"center_x": .5}
+                size_hint: 1, .2
+                Button:
+                    text: "<- Back"
+                    background_color: 0, 0, .3, .95
+                    on_release:
+                        app.root.current = "MainWindow"
+                        root.manager.transition.direction = "right"
