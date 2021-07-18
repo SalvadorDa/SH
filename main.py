@@ -1,7 +1,6 @@
 from kivy.app import App
-from kivy.properties import Clock
 from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.boxlayout import BoxLayout
+# from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -19,8 +18,8 @@ class TrainingRuTest(Screen):
         cl12, cl13, cl14, cl15, cl16, cl17, cl18, cl19, cl20, cl21, cl22, cl23, cl24, cl25, cl26, cl27, cl28, cl29, \
         cl30, cl31, cl32, on_slider_value, rand_letter, re_letter, res2, ch1, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, \
         l11, l12, l13, l14, l15, l16, l17, l18, l19, l20, l21, l22, l23, l24, l25, l26, l27, l28, l29, l30, l31, l32, \
-        ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10, ch11, ch12, ch13, ch14, ch15, ch16, ch17, ch18, ch19, ch20, ch21, \
-        ch22, ch23, ch24, ch25, ch26, ch27, ch28, ch29, ch30, ch31, ch32, corr_check
+        ch2, ch3, ch4, ch5, ch6, ch7, ch8, ch9, ch10, ch11, ch12, ch13, ch14, ch15, ch16, ch17, ch18, ch19, ch20, \
+        ch21, ch22, ch23, ch24, ch25, ch26, ch27, ch28, ch29, ch30, ch31, ch32, corr_check
 
     def __init__(self, tm=0.5, **kw):
         super().__init__(**kw)
